@@ -28,9 +28,11 @@ void MyGame::input(SDL_Event& event) {
 
 void MyGame::update() {
     player1.y = game_data.player1Y;
+    player2.y = game_data.player2Y;
 }
 
 void MyGame::render(SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &player1);
+    SDL_RenderDrawRect(renderer, &player2);
 }

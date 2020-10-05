@@ -17,7 +17,8 @@ static struct GameData {
 class MyGame {
 
     private:
-        SDL_Rect player1 = { 0, 0, 20, 60 };
+        SDL_Rect player1 = { 200, 200, 20, 60 };
+        SDL_Rect player2 = { 600, 600, 20, 60 };
 
     public:
         std::vector<std::string> messages;
