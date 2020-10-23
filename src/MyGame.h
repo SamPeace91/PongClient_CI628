@@ -6,6 +6,7 @@
 #include <string>
 
 #include "SDL.h"
+#include <SDL_image.h>
 
 static struct GameData {
     int player1Y = 0;
@@ -19,6 +20,9 @@ class MyGame {
     private:
         SDL_Rect player1 = { 200, 200, 20, 60 };
         SDL_Rect player2 = { 600, 600, 20, 60 };
+        SDL_Rect ball = { 0, 0, 30, 30 };
+        //SDL_Texture* t_ball = NULL;
+        //SDL_Surface* ball;
 
     public:
         std::vector<std::string> messages;

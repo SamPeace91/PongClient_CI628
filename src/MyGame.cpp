@@ -38,10 +38,20 @@ void MyGame::input(SDL_Event& event) {
 void MyGame::update() {
     player1.y = game_data.player1Y;
     player2.y = game_data.player2Y;
+    ball.x = game_data.ballX;
+    ball.y = game_data.ballY;
 }
 
 void MyGame::render(SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &player1);
     SDL_RenderDrawRect(renderer, &player2);
+    SDL_RenderDrawRect(renderer, &ball);
+
+    //IMG_Init(IMG_INIT_PNG);
+    //SDL_Surface* ball = IMG_Load("Ball.png");
+    //t_ball = SDL_CreateTextureFromSurface(renderer, ball);
+    //if (t_ball == NULL) { printf("Unable to create texture from %s! SDL Error: %s\n", ball, SDL_GetError); }
+    //SDL_FreeSurface(ball);
+    //IMG_Quit();
 }
