@@ -174,6 +174,9 @@ int main(int argc, char** argv) {
 
     delete game;
 
+    // Quit Image
+    IMG_Quit();
+
     // Close connection to the server
     SDLNet_TCP_Close(socket);
 

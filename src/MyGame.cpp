@@ -43,15 +43,45 @@ void MyGame::update() {
 }
 
 void MyGame::render(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDrawRect(renderer, &player1);
-    SDL_RenderDrawRect(renderer, &player2);
-    SDL_RenderDrawRect(renderer, &ball);
+    // Initialize PNG
+    IMG_Init(IMG_INIT_PNG);
 
-    //IMG_Init(IMG_INIT_PNG);
-    //SDL_Surface* ball = IMG_Load("Ball.png");
-    //t_ball = SDL_CreateTextureFromSurface(renderer, ball);
-    //if (t_ball == NULL) { printf("Unable to create texture from %s! SDL Error: %s\n", ball, SDL_GetError); }
-    //SDL_FreeSurface(ball);
-    //IMG_Quit();
+    // Field
+    SDL_Surface* fieldImg = IMG_Load("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/Field.png");
+    t_field = SDL_CreateTextureFromSurface(renderer, fieldImg);
+    if (t_field == NULL) { printf("Unable to create texture from %s! SDL Error: %s\n", fieldImg, SDL_GetError); }
+    // Player1
+    SDL_Surface* player1Img = IMG_Load("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/Player1.png");
+    t_player1 = SDL_CreateTextureFromSurface(renderer, player1Img);
+    if (t_player1 == NULL) { printf("Unable to create texture from %s! SDL Error: %s\n", player1Img, SDL_GetError); }
+    // Player2
+    SDL_Surface* player2Img = IMG_Load("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/Player2.png");
+    t_player2 = SDL_CreateTextureFromSurface(renderer, player2Img);
+    if (t_player2 == NULL) { printf("Unable to create texture from %s! SDL Error: %s\n", player2Img, SDL_GetError); }
+    // Ball
+    SDL_Surface* ballImg = IMG_Load("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/Ball.png");
+    t_ball = SDL_CreateTextureFromSurface(renderer, ballImg);
+    if (t_ball == NULL) { printf("Unable to create texture from %s! SDL Error: %s\n", ballImg, SDL_GetError); }
+
+    // Render PNG
+    SDL_RenderCopy(renderer, t_field, NULL, NULL);
+    SDL_RenderPresent(renderer);
+    SDL_RenderCopy(renderer, t_player1, NULL, &player1);
+    SDL_RenderPresent(renderer);
+    SDL_RenderCopy(renderer, t_player2, NULL, &player2);
+    SDL_RenderPresent(renderer);
+    SDL_RenderCopy(renderer, t_ball, NULL, &ball);
+    SDL_RenderPresent(renderer);
+
+    // Render Bats
+    //SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    //SDL_RenderDrawRect(renderer, &player1);
+    //SDL_RenderDrawRect(renderer, &player2);
+    //SDL_RenderDrawRect(renderer, &ball);
+
+    // Clear Surfaces
+    SDL_FreeSurface(fieldImg);
+    SDL_FreeSurface(player1Img);
+    SDL_FreeSurface(player2Img);
+    SDL_FreeSurface(ballImg);
 }

@@ -21,8 +21,10 @@ class MyGame {
         SDL_Rect player1 = { 200, 200, 20, 60 };
         SDL_Rect player2 = { 600, 600, 20, 60 };
         SDL_Rect ball = { 0, 0, 30, 30 };
-        //SDL_Texture* t_ball = NULL;
-        //SDL_Surface* ball;
+        SDL_Texture* t_ball = NULL;
+        SDL_Texture* t_field = NULL;
+        SDL_Texture* t_player1 = NULL;
+        SDL_Texture* t_player2 = NULL;
 
     public:
         std::vector<std::string> messages;
