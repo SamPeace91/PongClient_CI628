@@ -2,6 +2,8 @@
 
 #include "MyGame.h"
 
+#include <SDL_mixer.h>
+
 using namespace std;
 
 const char* IP_NAME = "localhost";
@@ -170,12 +172,24 @@ int main(int argc, char** argv) {
     SDL_CreateThread(on_receive, "ConnectionReceiveThread", (void*)socket);
     SDL_CreateThread(on_send, "ConnectionSendThread", (void*)socket);
 
+    if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+        printf("Error, couldn't initialise SDL audio");
+        exit(5);
+    }
+
+    //Mix_Music* gameMusic = Mix_LoadMUS("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/GameMusic.wav");
+    //Mix_Chunk* ballHit = Mix_LoadWAV("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/Football.wav");
+    //Mix_Chunk* p1scores = Mix_LoadWAV("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/P1Goal.wav");
+    //Mix_Chunk* p2scores = Mix_LoadWAV("C:/Users/skyro/Desktop/UniFinalYear/MultiplayerDevelopment/PongClient/CI628/assets/P2Goal.wav");
+    
     run_game();
 
-    delete game;
+    //Mix_FreeChunk(ballHit);
+    //Mix_FreeChunk(p1scores);
+    //Mix_FreeChunk(p2scores);
+    //Mix_FreeMusic(gameMusic);
 
-    // Quit Image
-    IMG_Quit();
+    delete game;
 
     // Close connection to the server
     SDLNet_TCP_Close(socket);
